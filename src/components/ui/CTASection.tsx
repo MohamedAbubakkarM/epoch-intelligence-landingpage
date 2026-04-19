@@ -8,7 +8,7 @@ export function CTASection() {
   const { email, setEmail, status, message, handleSubmit } = useSubscribe();
   
   return (
-    <section className="py-40 px-6 relative overflow-hidden">
+    <section id="waitlist" className="py-40 px-6 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:32px_32px]"></div>
       </div>

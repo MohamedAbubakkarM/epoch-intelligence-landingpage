@@ -1,11 +1,9 @@
 "use client";
- 
+
 import { motion } from "framer-motion";
-import { ArrowRight, Globe } from "lucide-react";
-import { useSubscribe } from "@/hooks/useSubscribe";
- 
+import { ArrowRight } from "lucide-react";
+
 export function HeroSection() {
-  const { email, setEmail, status, message, handleSubmit } = useSubscribe();
   return (
     <section className="relative w-full min-h-[90vh] flex flex-col justify-center items-center overflow-hidden px-6 pt-32 pb-20">
       <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
@@ -52,41 +50,13 @@ export function HeroSection() {
           transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
           className="flex flex-col items-center w-full max-w-md mx-auto relative justify-center"
         >
-          {status === "success" ? (
-             <div className="px-8 py-4 w-full text-center bg-white/5 border border-theme-gold/30 rounded-full text-theme-gold-light font-medium tracking-wide shadow-[0_0_20px_rgba(207,174,96,0.1)]">
-               {message}
-             </div>
-          ) : (
-             <div className="w-full">
-                <form 
-                  onSubmit={handleSubmit}
-                  className="flex flex-col sm:flex-row gap-3 w-full"
-                >
-                  <div className="relative w-full">
-                    <input 
-                      type="email" 
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      placeholder="Enter your email" 
-                      className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-full text-slate-100 placeholder-slate-400 outline-none focus:border-[#cfae60] focus:ring-1 focus:ring-[#cfae60]/50 transition-all font-sans disabled:opacity-50"
-                      disabled={status === "loading"}
-                    />
-                  </div>
-                  <button 
-                    type="submit" 
-                    disabled={status === "loading"}
-                    className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-black bg-gradient-to-r from-[#cfae60] to-[#ecdbb0] rounded-full overflow-hidden transition-all hover:scale-105 duration-300 shadow-[0_0_30px_rgba(207,174,96,0.3)] hover:shadow-[0_0_40px_rgba(207,174,96,0.5)] shrink-0 disabled:opacity-70 disabled:hover:scale-100"
-                  >
-                    <span className="mr-2">{status === "loading" ? "Wait..." : "Get Early Access"}</span>
-                    <ArrowRight strokeWidth={1.5} className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </form>
-                {status === "error" && (
-                  <div className="mt-3 text-red-400 text-sm font-sans px-4 text-center" dangerouslySetInnerHTML={{ __html: message }} />
-                )}
-             </div>
-          )}
+          <a 
+            href="#waitlist"
+            className="group relative inline-flex items-center justify-center px-10 py-5 font-bold text-black bg-gradient-to-r from-[#cfae60] to-[#ecdbb0] rounded-full overflow-hidden transition-all hover:scale-105 duration-300 shadow-[0_0_30px_rgba(207,174,96,0.3)] hover:shadow-[0_0_50px_rgba(207,174,96,0.6)] shrink-0"
+          >
+            <span className="mr-2 text-lg">Join the Waitlist</span>
+            <ArrowRight strokeWidth={2.5} className="w-6 h-6 group-hover:translate-x-1.5 transition-transform" />
+          </a>
         </motion.div>
       </div>
     </section>
